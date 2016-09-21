@@ -20,6 +20,16 @@ Add a server config:
 
 Then run both from IntelliJ.
 
+## Using from other editors
+
+Start a REPL:
+
+```
+lein repl
+```
+
+and use the `start-figwheel` or `go` functions to start figwheel or the server.
+
 ## Using the server
 
 In the server REPL, start the server with:
