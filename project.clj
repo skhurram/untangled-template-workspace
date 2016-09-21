@@ -11,14 +11,13 @@
                  [org.omcljs/om "1.0.0-alpha45"]
 
                  [navis/untangled-spec "0.3.8" :scope "test"]
-
+                 [org.clojure/core.async "0.2.391"]
+                 [http-kit "2.2.0"]
                  [com.taoensso/timbre "4.3.1"]
                  [navis/untangled-server "0.6.1"]]
 
   :plugins [[lein-cljsbuild "1.1.4"]
             [com.jakemccrary/lein-test-refresh "0.15.0"]]
-
-  :hooks [leiningen.cljsbuild]
 
   :uberjar-name "template.jar"
 
@@ -32,20 +31,23 @@
 
   :figwheel {:css-dirs ["resources/public/css"]}
 
-  :profiles {:uberjar {:main      template.core
-                       :aot       :all
-                       :cljsbuild {:builds [{:id           "production"
-                                             :source-paths ["src/client"]
-                                             :jar          true
-                                             :compiler     {:main          template.main
-                                                            :output-to     "resources/public/js/template.min.js"
-                                                            :output-dir    "resources/public/js/prod"
-                                                            :asset-path    "js/prod"
-                                                            :optimizations :simple}}]}}
+  :profiles {:uberjar {:main       template.core
+                       :aot        :all
+                       :prep-tasks ["compile"
+                                    ["cljsbuild" "once" "production"]]
+                       :cljsbuild  {:builds [{:id           "production"
+                                              :source-paths ["src/client"]
+                                              :jar          true
+                                              :compiler     {:main          template.main
+                                                             :output-to     "resources/public/js/template.min.js"
+                                                             :output-dir    "resources/public/js/prod"
+                                                             :asset-path    "js/prod"
+                                                             :optimizations :simple}}]}}
              :dev     {:source-paths ["dev/client" "dev/server" "src/client" "src/server"]
                        :dependencies [[binaryage/devtools "0.6.1"]
-                                      [figwheel-sidecar "0.5.5"]
-                                      [lein-cljsbuild "1.1.4"]
+                                      [org.clojure/tools.namespace "0.2.11"]
+                                      ;[org.clojure/tools.analyzer.jvm "0.6.10"]
+                                      [figwheel-sidecar "0.5.7" :exclusions [org.clojure/tools.reader]]
                                       [devcards "0.2.1-7" :exclusions [org.omcljs/om]]]
                        :cljsbuild    {:builds [{:id           "dev"
                                                 :figwheel     true
