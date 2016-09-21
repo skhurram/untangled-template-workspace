@@ -47,13 +47,15 @@ To reload the server code:
 IF your compile fails, Recompile after failed compile:
 
 ```
-(stop) ; this will fail (which is ok) if you'd had a failing refresh, but see WARNING below
 (refresh)
 (go)
 ```
 
-WARNING: If you `(refresh)` without stopping the server you'll lose the var holding your server, and won't be able
-to stop the server (which leaves the port in use). That will cause you to need to restart your REPL.
+If you cannot find `refresh`, try:
+
+```
+(tools-ns/refresh)
+```
 
 ## Full Stack
 
