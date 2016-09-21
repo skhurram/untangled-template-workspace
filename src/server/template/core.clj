@@ -4,7 +4,6 @@
     [template.system :as sys]
     [untangled.server.core :as c]
     [untangled.server.impl.components.config :refer [load-config]]
-
     [taoensso.timbre :as timbre])
   (:gen-class))
 

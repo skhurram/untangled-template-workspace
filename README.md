@@ -65,12 +65,26 @@ http://localhost:3449/test.html
 
 # Deploying
 
+Build the standalone Jar with:
+
 ```
 lein uberjar
 ```
 
-will build `target/template.jar`. This jar can be run with:
+will build `target/template.jar`. 
+
+The production `prod.edn` file (in src/config) grabs the web PORT from
+the environment (as required by Heroku). So, this jar can be run with:
 
 ```
+export PORT=8080   # the web server port to use
 java -Dconfig=config/prod.edn -jar template.jar
+```
+
+The `Procfile` gives the correct information to heroku, so if you've 
+configured the app (see Heroku docs) you should be able to deploy with
+git:
+
+```
+git push heroku master
 ```
