@@ -20,7 +20,7 @@
         (dom/div nil
           (dom/div #js {:className "row"}
             (dom/div #js {:className "col-xs-4"} "")
-            (dom/form #js {:class [:form :$col-xs-4]}
+            (dom/div #js {:class [:form :$col-xs-4]}
                       (dom/div #js {:className "form-group"}
                         (dom/label #js {:htmlFor "username"} "Email Address")
                         (dom/input #js {:className "form-control" :type "email" :name "username" :value username
