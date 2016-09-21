@@ -1,5 +1,5 @@
-(defproject rad "0.1.0-SNAPSHOT"
-  :description "Restoration Agriculture Development Investment Platform"
+(defproject template "0.1.0-SNAPSHOT"
+  :description "Template Project"
   :min-lein-version "2.6.1"
 
   :dependencies [[org.clojure/clojure "1.8.0"]
@@ -16,15 +16,11 @@
                  [navis/untangled-server "0.6.1"]]
 
   :plugins [[lein-cljsbuild "1.1.4"]
-            [lein-heroku "0.5.3"]
             [com.jakemccrary/lein-test-refresh "0.15.0"]]
 
   :hooks [leiningen.cljsbuild]
 
   :uberjar-name "template.jar"
-  :heroku {:app-name      "your-app-name"
-           :jdk-version   "1.8"
-           :include-files ["target/template.jar"]}
 
   :test-refresh {:report       untangled-spec.reporters.terminal/untangled-report
                  :with-repl    false

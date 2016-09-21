@@ -1,10 +1,10 @@
 (ns template.core
   (:require
     [com.stuartsierra.component :as component]
-    [template.system :as sys]
     [untangled.server.core :as c]
     [untangled.server.impl.components.config :refer [load-config]]
-    [taoensso.timbre :as timbre])
+    [taoensso.timbre :as timbre]
+    [template.system :as sys])
   (:gen-class))
 
 (def console (System/console))
