@@ -20,6 +20,7 @@ resources/public/js/specs
 resources/public/js/dev
 resources/public/js/cards
 resources/public/js/prod
+resources/public/js/template.js
 resources/public/js/template.min.js
 resources/public/js/ci
 resources/public/js/unit-tests.js
