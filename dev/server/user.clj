@@ -12,6 +12,7 @@
 (def figwheel-config (fig/fetch-config))
 (def figwheel (atom nil))
 
+; Usable from a REPL to start one-or-more figwheel builds
 (defn start-figwheel
   "Start Figwheel on the given builds, or defaults to build-ids in `figwheel-config`."
   ([]
