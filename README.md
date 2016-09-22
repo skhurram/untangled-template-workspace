@@ -8,6 +8,73 @@ server always approves login.
 
 It is set up to be deployable to Heroku (or anywhere) as a standalone jar.
 
+## Contents
+
+```
+├── Makefile                    Convenience targets
+├── Procfile                    Sample Heroku deployment file
+├── dev
+│   ├── client
+│   │   └── cljs
+│   │       └── user.cljs       REPL helpers and entry point for cljs dev mode
+│   └── server
+│       └── user.clj            REPL functions for starting server and cljs builds
+├── package.json                NODE config, used for running CI cljs tests
+├── project.clj                 
+├── resources
+│   └── public
+│       ├── cards.html          Devcards HTML page
+│       ├── css
+│       │   ├── edn.css         CSS files for rendering specs in browser
+│       │   └── test.css
+│       ├── index-dev.html      Dev mode application home page
+│       ├── index.html          Production mode application home page
+│       └── test.html           Tests HTML page
+├── script
+│   └── figwheel.clj            CLJ script for starting figwheel automatically
+├── specs
+│   ├── client
+│   │   └── template
+│   │       ├── all_tests.cljs       CI file for running all tests
+│   │       ├── sample_spec.cljs     Sample CLJS specification
+│   │       ├── spec_main.cljs       File to join all specs into a browser-runnable spec
+│   │       ├── tests_to_run.cljs    Common file (for CI and Browser) to ensure all tests are loaded
+│   │       └── ui
+│   │           └── root_spec.cljs   Sample Specification
+│   ├── config
+│   └── server
+│       └── sample
+│           └── sample_spec.clj      Sample Server-side specification
+├── src
+│   ├── cards
+│   │   └── template
+│   │       ├── cards.cljs           Devcards setup
+│   │       └── intro.cljs           Sample Devcard
+│   ├── client
+│   │   └── template
+│   │       ├── core.cljs            Definition of app. Used by production and dev modes
+│   │       ├── main.cljs            Production entry point for cljs app
+│   │       ├── state
+│   │       │   └── mutations.cljs   A place to put Om mutations
+│   │       └── ui
+│   │           ├── components.cljs  Sample UI component
+│   │           ├── login.cljs       UI Login screen. Includes some mutations.
+│   │           ├── main.cljs        UI Main screen
+│   │           ├── new_user.cljs    UI New User Screen
+│   │           └── root.cljs        Root UI with Union query for tab switching. Includes nav mutations.
+│   └── server
+│       ├── config                   Server EDN configuration files
+│       │   ├── defaults.edn         Always applied (but always used as a base for config merge)
+│       │   ├── dev.edn              Dev-mode config (auto-selected by user.clj setup)
+│       │   └── prod.edn             Production-mode config. Selected via -Dconfig=config/prod.edn
+│       └── template
+│           ├── api
+│           │   ├── mutations.clj    Server-side Om mutations
+│           │   └── read.clj         Server-side Om queries
+│           ├── core.clj             Server-side entry point for production mode
+│           └── system.clj           Server-side system configuration (shared for dev and production)
+```
+
 ## Setting up Run Configurations (IntelliJ)
 
 Add a figwheel config:
@@ -22,7 +89,10 @@ Then run both from IntelliJ.
 
 ## Using from other editors
 
-Start a REPL:
+See the Makefile for useful command-line targets, which are useful for
+when working from a lower-level system editor.
+
+The simplest approach is to start a REPL:
 
 ```
 lein repl
@@ -57,7 +127,9 @@ If you cannot find `refresh`, try:
 (tools-ns/refresh)
 ```
 
-## Full Stack
+## Using the Full Stack App (dev mode)
+
+Open a browser on:
 
 ```
 http://localhost:3000/index-dev.html
@@ -65,11 +137,15 @@ http://localhost:3000/index-dev.html
 
 ## Dev Cards
 
+Open a browser on:
+
 ```
 http://localhost:3449/cards.html
 ```
 
 ## Specs
+
+Open a browser on:
 
 ```
 http://localhost:3449/test.html
