@@ -21,5 +21,9 @@ resources/public/js/dev
 resources/public/js/cards
 resources/public/js/prod
 resources/public/js/template.min.js
-resources/public/js/specs.js
+resources/public/js/ci
+resources/public/js/unit-tests.js
 resources/public/js/cards.js
+resources/public/js/cards.js
+node_modules
+resources/private

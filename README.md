@@ -75,6 +75,29 @@ http://localhost:3449/cards.html
 http://localhost:3449/test.html
 ```
 
+## Continuous Integration Tests
+
+The project is set up to be able to run both the UI and Server tests from a
+standard *NIX command-line (untested with Windows, but works with OSX and
+Linux). 
+
+The UI tests use node, karma, and doo to accomplish tests.
+
+The Makefile has targets for running the various CI tests modes. You
+must install Node and NPM. In OSX, Home Brew can make quick work of that.
+
+## Makefile
+
+There is a GNU `Makefile` in the project that can start various command
+line interactions. This file is commented so you can see what targets
+are valid.
+
+Example: Run a REPL that is ready to run the Untangled Server:
+
+```
+make server
+```
+
 # Deploying
 
 Build the standalone Jar with:
