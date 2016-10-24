@@ -6,7 +6,7 @@
                  [org.clojure/clojurescript "1.9.229"]
                  [commons-io "2.5"]
 
-                 [navis/untangled-client "0.5.6-SNAPSHOT"]
+                 [navis/untangled-client "0.6.0-SNAPSHOT"]
                  [untangled/om-css "1.0.0"]
                  [org.omcljs/om "1.0.0-alpha45"]
 

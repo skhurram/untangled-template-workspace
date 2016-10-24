@@ -12,7 +12,7 @@
 (defmethod apimutate 'login/attempt-login [env k {:keys [u p uid]}]
   {:action (fn []
              (reset! logged-in? true)
-             {:result {:uid 42}
+             {:uid     42
               :tempids {uid 42}})})
 
 (defmethod apimutate 'login/logout [env k {:keys [u p uid]}]
