@@ -23,7 +23,9 @@
    (let [default-build-ids (-> figwheel-config :data :build-ids)
          build-ids (if (empty? build-ids) default-build-ids build-ids)
          preferred-config (assoc-in figwheel-config [:data :build-ids] build-ids)]
-     (reset! figwheel (component/system-map :figwheel-system (fig/figwheel-system preferred-config)))
+     (reset! figwheel (component/system-map
+                        :css-watcher (fig/css-watcher {:watch-paths ["resources/public/css"]})
+                        :figwheel-system (fig/figwheel-system preferred-config)))
      (println "STARTING FIGWHEEL ON BUILDS: " build-ids)
      (swap! figwheel component/start)
      (fig/cljs-repl (:figwheel-system @figwheel)))))

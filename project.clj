@@ -88,6 +88,6 @@
                                       [org.clojure/tools.namespace "0.2.11"]
                                       [com.cemerick/piggieback "0.2.1"]
                                       [figwheel-sidecar "0.5.7" :exclusions [org.clojure/tools.reader]]
-                                      [devcards "0.2.1-7" :exclusions [org.omcljs/om]]]
+                                      [devcards "0.2.2" :exclusions [org.omcljs/om]]]
                        :repl-options {:init-ns          user
                                       :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}}})
