@@ -22,6 +22,7 @@
                  [navis/untangled-server "0.6.1"]]
 
   :plugins [[lein-cljsbuild "1.1.4"]
+            [lein-junit "1.1.8"]
             [lein-doo "0.1.7"]
             [com.jakemccrary/lein-test-refresh "0.15.0"]]
 
@@ -35,9 +36,12 @@
                  :changes-only true}
 
   :source-paths ["src/main/java" "src/main/clj/server" "src/main/clj/client"]
-  :java-source-paths ["src/main/java"]
-  :test-paths ["src/test/java" "src/test/clj/client" "src/test/clj/server" "src/test/clj/config"]
+  :test-paths ["src/test/clj/server" "src/test/clj/config"]
+
   :clean-targets ^{:protect false} ["target" "resources/public/js" "resources/private"]
+
+  :java-source-paths ["src/main/java" "src/test/java"]
+  :junit ["src/test/java"]
 
   :figwheel {:css-dirs ["resources/public/css"]}
 
