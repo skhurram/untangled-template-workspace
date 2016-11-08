@@ -23,3 +23,40 @@ Viewpoints:
 - Deploy
 - Test
 - CI
+
+Ideas:
+
+Sample Migration:
+
+```
+-- Author: Joe Schmoe
+-- Date: 2016-11-05
+-- Approved-by: Sam Reviewer
+
+create table boo (
+   id serial primary key not null,
+   thing text not null,
+   last_modified timestamp not null default current_timestamp
+   );
+```
+
+Sample Seeding
+
+Row Defaults for Seeding (boo-defaults):
+
+```
+boo(id=any, thing=any, last_modified=time(now, -1 minute))
+```
+
+Sample seed file for a test (boo-seed):
+
+```
+boo(id=MyBoo, thing="This is a test")
+```
+
+Sample usage:
+
+```
+map = seed(database, "boo-defaults", "boo-seed")
+long rowID = map.get("MyBoo") 
+```
