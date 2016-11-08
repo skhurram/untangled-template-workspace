@@ -40,15 +40,15 @@ create table boo (
    );
 ```
 
-Sample Seeding
+Sample Seeding (use EDN???)
 
 Row Defaults for Seeding (boo-defaults):
 
 ```
-boo(id=any, thing=any, last_modified=time(now, -1 minute))
+boo { id=any, thing=any, last_modified=time(now, -1 minute))
 ```
 
-Sample seed file for a test (boo-seed):
+Sample seed file for a test (boo-seed): (EDN? YAML?)
 
 ```
 boo(id=MyBoo, thing="This is a test")
