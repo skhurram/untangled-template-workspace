@@ -11,9 +11,10 @@
                  [org.omcljs/om "1.0.0-alpha45"]
 
                  [navis/untangled-spec "0.3.8" :scope "test"]
+                 [junit/junit "4.8.2" :scope "test"]
+
                  [lein-doo "0.1.7" :scope "test"]
                  [org.clojure/core.async "0.2.391"]
-                 [junit/junit "4.8.2"]
                  [org.flywaydb/flyway-core "4.0.2"]
                  [postgresql/postgresql "9.1-901-1.jdbc4"]
                  [com.zaxxer/HikariCP "2.4.7"]
@@ -24,7 +25,7 @@
   :plugins [[lein-cljsbuild "1.1.4"]
             [lein-junit "1.1.8"]
             [lein-doo "0.1.7"]
-            [com.jakemccrary/lein-test-refresh "0.15.0"]]
+            [com.jakemccrary/lein-test-refresh "0.17.0"]]
 
   :doo {:build "automated-tests"
         :paths {:karma "node_modules/karma/bin/karma"}}
@@ -33,6 +34,8 @@
 
   :test-refresh {:report       untangled-spec.reporters.terminal/untangled-report
                  :with-repl    false
+                 :watch-dirs   ["src/main/clj/server" "src/test/clj/server"]
+                 :refresh-dirs ["src/main/clj/server" "src/test/clj/server"]
                  :changes-only true}
 
   :source-paths ["src/main/java" "src/main/clj/server" "src/main/clj/client"]
@@ -92,7 +95,7 @@
                        :aot        :all
                        :prep-tasks ["compile"
                                     ["cljsbuild" "once" "production"]]}
-             :dev     {:source-paths ["dev/client" "dev/server" "src/client" "src/server"]
+             :dev     {:source-paths ["dev/client" "dev/server" "src/main/clj/client" "src/main/clj/server"]
                        :dependencies [[binaryage/devtools "0.6.1"]
                                       [org.clojure/tools.namespace "0.2.11"]
                                       [com.cemerick/piggieback "0.2.1"]

@@ -13,4 +13,3 @@
       (+ -1 -3 -5) => -9
       "with a mix of signed integers"
       (+ +5 -3) => 2)))
-
