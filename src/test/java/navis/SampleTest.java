@@ -17,4 +17,12 @@ public class SampleTest {
         releaseDatabase(DBName);
         */
     }
+
+
 }
+
+class Database
+{
+
+}
+

@@ -1,9 +1,26 @@
 Tasks:
 
+- Figure out where schema lives
+- Defaults
+    - Make sure strings are case-sensitive
+    - UTF-8
+    - Numerics for money
+    - UTC time zone. Careful about how date are translated from client
+    - Bigserial PKs
+    - Timestamping of rows?
+    - FK enforcement, with indexes
+    - Cascade delete design
+- Figure out how to split/share/version source
 - Make our untangled server config usable from Java
 - Figure out connection pooling and database injection 
    - For production code
-   - Augment with a story for creating/starting/injecting databases for tests
+   - Connection lifecycle
+   - Augment with a story for creating/starting/injecting databases for tests (NO PII)
+       - Using template for speed
+- Include read streaming replication from the start
+- Security
+   - PII tokenization and such
+   - Remove private data associated with a person
 - Database seeding
    - Production evolution (static one-time import)
    - Test seeding with tempid map for use in the test
@@ -45,18 +62,23 @@ Sample Seeding (use EDN???)
 Row Defaults for Seeding (boo-defaults):
 
 ```
-boo { id=any, thing=any, last_modified=time(now, -1 minute))
+{
+ TABLE_NAME { COL VAL COL VAL COL VAL }
+ boo { id any, thing any, last_modified (now -1 minute))
+}
 ```
 
 Sample seed file for a test (boo-seed): (EDN? YAML?)
 
 ```
-boo(id=MyBoo, thing="This is a test")
+[TABLE_NAME { COL VAL COL VAL } 
+ boo { id MyBoo, thing "This is a test" }
+ other {id MyOther, parentBooFK MyBoo }]
 ```
 
 Sample usage:
 
 ```
-map = seed(database, "boo-defaults", "boo-seed")
+map = seed(database, "boo-defaults", "boo-seed", additionalSeedFilenames)
 long rowID = map.get("MyBoo") 
 ```
