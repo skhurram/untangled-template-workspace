@@ -2,13 +2,13 @@
   :description "Template Project"
   :min-lein-version "2.6.1"
 
-  :dependencies [[org.clojure/clojure "1.8.0"]
-                 [org.clojure/clojurescript "1.9.229"]
+  :dependencies [[org.clojure/clojure "1.9.0-alpha14"]
+                 [org.clojure/clojurescript "1.9.293"]
                  [commons-io "2.5"]
 
-                 [navis/untangled-client "0.6.0-SNAPSHOT"]
+                 [navis/untangled-client "0.6.0"]
                  [untangled/om-css "1.0.0"]
-                 [org.omcljs/om "1.0.0-alpha45"]
+                 [org.omcljs/om "1.0.0-alpha47"]
 
                  [navis/untangled-spec "0.3.8" :scope "test"]
                  [lein-doo "0.1.7" :scope "test"]
